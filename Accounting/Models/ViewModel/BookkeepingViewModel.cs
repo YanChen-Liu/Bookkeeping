@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Bookkeeping.Models.ViewModel
+namespace Accounting.Models.ViewModel
 {
     public class BookkeepingViewModel
     {
@@ -18,7 +18,7 @@ namespace Bookkeeping.Models.ViewModel
         [Display(Name = "備註")]
         public string Remarks { get; set; }//備註
 
-        public static List<BookkeepingViewModel> AllData()
+        public static List<BookkeepingViewModel> AllData(BookkeepingViewModel bookkeeping)
         {
             //實體化列表
             List<BookkeepingViewModel> Data = new List<BookkeepingViewModel>();
@@ -48,7 +48,14 @@ namespace Bookkeeping.Models.ViewModel
                 Money = 800,
                 Remarks = "第三筆"
             });
-
+            Data.Add(new BookkeepingViewModel
+            {
+                ID = 4,
+                Item = bookkeeping.Item,
+                Day = bookkeeping.Day,
+                Money = bookkeeping.Money,
+                Remarks = bookkeeping.Remarks
+            });
             return Data;
         }
     }
