@@ -24,7 +24,7 @@ namespace Accounting.Service
         public AccountingToPagedListViewModel Lookup(int page)
         {
             var source = _homworkRep.LookupAll();
-            source = source.OrderBy(x => x.Id);
+            source = source.OrderBy(x => x.Dateee);
             int currentPage = page < 1 ? 1 : page;
             var PageList = new AccountingToPagedListViewModel()
             {
