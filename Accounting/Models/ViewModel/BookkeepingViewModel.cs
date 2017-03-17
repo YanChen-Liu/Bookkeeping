@@ -16,47 +16,6 @@ namespace Accounting.Models.ViewModel
         [Display(Name = "金額")]
         public Decimal Money { get; set; }//金額
         [Display(Name = "備註")]
-        public string Remarks { get; set; }//備註
-
-        public static List<BookkeepingViewModel> AllData(BookkeepingViewModel bookkeeping)
-        {
-            //實體化列表
-            List<BookkeepingViewModel> Data = new List<BookkeepingViewModel>();
-
-            //加入三筆預設資料
-            Data.Add(new BookkeepingViewModel
-            {
-                ID = 1,
-                Item = "支出",
-                Day = new DateTime(2016, 1, 1),
-                Money = 300,
-                Remarks = "第一筆"
-            });
-            Data.Add(new BookkeepingViewModel
-            {
-                ID = 2,
-                Item = "支出",
-                Day = new DateTime(2016, 1, 2),
-                Money = 1600,
-                Remarks = "第二筆"
-            });
-            Data.Add(new BookkeepingViewModel
-            {
-                ID = 3,
-                Item = "支出",
-                Day = new DateTime(2016, 1, 3),
-                Money = 800,
-                Remarks = "第三筆"
-            });
-            Data.Add(new BookkeepingViewModel
-            {
-                ID = 4,
-                Item = bookkeeping.Item,
-                Day = bookkeeping.Day,
-                Money = bookkeeping.Money,
-                Remarks = bookkeeping.Remarks
-            });
-            return Data;
-        }
-    }
+        public string Remarks { get; set; }//備註       
+    }    
 }

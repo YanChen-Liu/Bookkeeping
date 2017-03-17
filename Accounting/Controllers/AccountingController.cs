@@ -8,22 +8,24 @@ using Accounting.Models;
 using Accounting.Service;
 using System.Net;
 using ServiceLab.Repositories;
+using PagedList;
+using PagedList.Mvc;
 
 namespace Accounting.Controllers
 {
     public class AccountingController : Controller
     {
-        private readonly HomeworkService _homeworkSvc;
+        private readonly AccountingService _homeworkSvc;
 
         public AccountingController()
         {
             var unitOfWork = new EFUnitOfWork();
-            _homeworkSvc = new HomeworkService(unitOfWork);
+            _homeworkSvc = new AccountingService(unitOfWork);
         }
         // GET: Accounting
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
-            var source = _homeworkSvc.Lookup();
+            var source = _homeworkSvc.Lookup(page);
             return View(source);
         }
 
@@ -44,15 +46,8 @@ namespace Accounting.Controllers
 
                 return RedirectToAction("Index");
             }
-            var result = new BookkeepingViewModel()
-            {
-                ID = 0,
-                Item = data.Item,
-                Day = data.Day,
-                Money = data.Money,
-                Remarks = data.Remarks
-            };
-            return View(result);
+                        
+            return View(data);
         }
     }
 }
