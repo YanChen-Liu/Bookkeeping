@@ -40,17 +40,14 @@ namespace Accounting.Controllers
         {
             if (ModelState.IsValid)
             {
+                data.ID = 0;
                 _homeworkSvc.Add(data);
                 _homeworkSvc.Save();
-                return RedirectToAction("Index");
-            }                        
-            return View(data);
-        }
 
-        public ActionResult Valid(DateTime day)
-        {
-            bool isValidate = day < DateTime.Now ;
-            return Json(isValidate, JsonRequestBehavior.AllowGet);
+                return RedirectToAction("Index");
+            }
+                        
+            return View(data);
         }
     }
 }

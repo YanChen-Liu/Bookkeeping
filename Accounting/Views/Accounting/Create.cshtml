@@ -20,8 +20,8 @@
                 <div class="col-md-10">
                     @Html.DropDownListFor(model => model.Item, new List<SelectListItem>
                     {
-                       new SelectListItem { Text = "支出", Value = "0" },
-                       new SelectListItem { Text = "收入", Value = "1" }
+                       new SelectListItem { Text = "支出", Value = "支出" },
+                       new SelectListItem { Text = "收入", Value = "收入" }
                     }, "請選擇", new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Item, "", new { @class = "text-danger" })
                 </div>
