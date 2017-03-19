@@ -32,7 +32,7 @@
                         @(num++)
                     </td>
                     <td>
-                        @(data.Categoryyy == 0 ? "支出":"收入")                        
+                        @AddColor.classcolor(data.Categoryyy)
                     </td>
                     <td>                        
                         @data.Dateee.ToString("yyyy/MM/dd")
@@ -41,7 +41,6 @@
                         @data.Amounttt.ToString("0,0")
                     </td>
                     <td>
-                        @*縮短備註*@
                         @(data.Remarkkk.Length >= 60 ?
                         data.Remarkkk.Substring(data.Remarkkk.IndexOf(data.Remarkkk), 60) + "...." :
                         data.Remarkkk.Substring(data.Remarkkk.IndexOf(data.Remarkkk), data.Remarkkk.Length))

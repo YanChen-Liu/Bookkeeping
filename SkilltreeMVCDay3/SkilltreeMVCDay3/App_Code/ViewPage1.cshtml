@@ -1,0 +1,53 @@
+﻿@using System.Text.RegularExpressions
+
+@functions
+{
+/// <summary>
+/// YouTube 播放器
+/// </summary>
+/// <param name="url"></param>
+/// <param name="width"></param>
+/// <param name="height"></param>
+}
+@helper YouTube(string url, int width, int height)
+{
+    @IFrame(url, width, height)
+}
+
+@helper Tudou(string url, int width, int height)
+{
+    @IFrame(url, width, height)
+}
+
+@helper Youku(string url, int width, int height)
+{
+    @Embed(url, width, height)
+}
+
+@helper Vimeo(string url, int width, int height)
+{
+// http://vimeo.com/32720991
+var match = Regex.Match(url, @"/(\d+)($|\?)");
+
+if (match.Success)
+{
+    url = "http://player.vimeo.com/video/" + match.Groups[1].Value;
+        @IFrame(url, width, height)
+}
+}
+
+@helper Embed(string url, int width, int height)
+{
+    <object width="@width" height="@height">
+        <param name="movie" value="@url" />
+        <param name="wmode" value="transparent" />
+        <param name="allowScriptAccess" value="always" />
+        <param name="allowFullScreen" value="true" />
+        <embed src="@url" type="application/x-shockwave-flash" width="@width" height="@height" allowScriptAccess="true" allowFullScreen="true" />
+    </object>
+}
+
+@helper IFrame(string url, int width, int height)
+{
+    <iframe src="@url" width="@width" height="@height" type="text/html" frameBorder="0"></iframe>
+}
