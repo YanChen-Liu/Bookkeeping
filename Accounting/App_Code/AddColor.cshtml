@@ -1,0 +1,20 @@
+﻿@using System.Text.RegularExpressions
+
+@functions
+{
+/// <summary>
+/// 顏色選擇
+/// </summary>
+/// Value 欄位值
+}
+@helper classcolor(int Value)
+{
+if (Value == 0)
+{
+        <p style="color:red">支出</p>
+}
+else
+{
+        <p style="color:blue">收入</p>
+}
+}
